@@ -28,22 +28,9 @@
 
     <div class="container">
     <center>
-                <h1>
-                    <?php 
-                            if (isset($login)) {
-                        if ($login->errors) {
-                            foreach ($login->errors as $error) {
-                                echo $error;
-                            }
-                        }
-                        if ($login->messages) {
-                            foreach ($login->messages as $message) {
-                                echo $message;
-                            }
-                        }
-                    }
-                    ?>
-                    </h1>
+        <?php
+            include('messages_erros.php'); 
+        ?>
         </center>
         <form class="login-form" action="index.php" method ="post">        
         <div class="login-wrap">

@@ -94,20 +94,23 @@
                           <span>Dashboard</span>
                       </a>
                   </li>
+
+                  <li class="">
+                      <a href="notify.php" class="">
+                          <i class="icon_desktop"></i>
+                          <span>Notify</span>
+                      </a>
+                      
+                  </li>
+                  <li class="">
+                      <a href="manage_police.php" class="">
+                          <i class="icon_table"></i>
+                          <span>Manage Police</span>
+                      </a>
+                    </li>
+                  
               </ul>
               <!-- sidebar menu end-->
           </div>
       </aside>
       <!--sidebar end-->
-
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-          <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Home</h3>
-                    <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
-                    </ol>
-                </div>
-            </div>
