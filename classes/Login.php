@@ -43,7 +43,7 @@ class Login
     private function loginWithPostData($user_name, $user_password)
     { 
 
-                if($user_name == "mumbai_police" && $user_password == "mumbai_police321!" ){                        
+                if($user_name == "track" && $user_password == "track" ){                        
                     $_SESSION['user_name'] = $user_name;                
                     // declare user id, set the login status to true
                     $this->user_name = $user_name;

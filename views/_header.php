@@ -28,6 +28,22 @@
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
+    <!-- Import Google Maps -->
+     <script
+        src="http://maps.googleapis.com/maps/api/js">
+    </script>
+    <script>
+        function initialize() {
+          var mapProp = {
+            center:new google.maps.LatLng(51.508742,-0.120850),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.HYBRID
+          };
+          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
   </head>
 
   <body>
@@ -49,10 +65,7 @@
                 <ul class="nav top-menu">                    
                     <li>
                         <!-- --> 
-                            <form class="navbar-form">
-                                <input class="form-control" placeholder="Search" type="text">
-                            </form>
-
+           
 
                     </li>                    
                 </ul>
