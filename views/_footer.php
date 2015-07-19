@@ -31,6 +31,14 @@
     <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
     <!-- custom form component script for this page-->
     <script src="js/form-component.js"></script>
+
+     <!-- jquery validate js -->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+    <!-- custom form validation script for this page-->
+    <script src="js/form-validation-script.js"></script>
+   
+
     <!-- custome script for all page -->
     <script src="js/scripts.js"></script>
   

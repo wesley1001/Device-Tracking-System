@@ -7,6 +7,9 @@ require_once('classes/Login.php');
 
 $login = new Login();
 
+require_once('controllers/Police_Management.php');
+$Police_Management = new Police_Management();
+
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.

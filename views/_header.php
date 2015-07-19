@@ -32,18 +32,7 @@
      <script
         src="http://maps.googleapis.com/maps/api/js">
     </script>
-    <script>
-        function initialize() {
-          var mapProp = {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-            mapTypeId:google.maps.MapTypeId.HYBRID
-          };
-          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
+    
   </head>
 
   <body>
@@ -57,7 +46,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.php" class="logo">Mumbai Police <span class="lite">Tracking</span></a>
+            <a href="index.php" class="logo">Thane Police <span class="lite">Tracking</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -116,7 +105,7 @@
                       
                   </li>
                   <li class="">
-                      <a href="manage_police.php" class="">
+                      <a href="manage_police.php?page_id=1" class="">
                           <i class="icon_table"></i>
                           <span>Manage Police</span>
                       </a>

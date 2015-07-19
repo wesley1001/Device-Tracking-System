@@ -14,3 +14,19 @@
                     }
                     ?>
                     </h4>
+                    <h4>
+                    <?php 
+                        if (isset($Police_Management)) {
+                            if ($Police_Management->errors) {
+                                foreach ($Police_Management->errors as $error) {
+                                    echo $error;
+                                }
+                            }
+                            if ($Police_Management->messages) {
+                                foreach ($Police_Management->messages as $message) {
+                                    echo $message;
+                                }
+                            }
+                    }
+                    ?>
+                    </h4>

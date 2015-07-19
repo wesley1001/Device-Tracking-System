@@ -17,22 +17,28 @@
             </div>
              <!-- page start-->
              <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                       
                     <center>
-                      <!-- 
-                        <h3>Search</h3>
-                        <form class="">
-                              <input class="form-control"  placeholder="Search" type="text">
-                              <input class="form-control"  type="submit" value="submit">
-                        
+                      <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail2">Search Here</label>
+                                <input type="email" class="form-control sm-input" id="exampleInputEmail5" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                              <label class="label_radio" for="radio-01">
+                                                  <input name="sample-radio" id="radio-01" value="0" type="radio" checked /> Name
+                                              </label>
+                                              <label class="label_radio" for="radio-02">
+                                                  <input name="sample-radio" id="radio-02" value="1" type="radio" /> Number
+                                              </label>
+                                  
+                               </div>
+                            <button type="submit" class="btn btn-success">Search</button>
                         </form>
-                      -->
                     </center>
                 
                 </div>  
-                <div class="col-sm-4"></div>
                 
              </div>
              <br>
@@ -68,11 +74,7 @@
                   </center>
 
                 </div>
-              </div>
-            
-            
-
-
+              </div>  
               <!-- page end-->
  <?php 
 
