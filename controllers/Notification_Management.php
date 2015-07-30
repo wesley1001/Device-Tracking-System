@@ -21,9 +21,7 @@ class Notification_Management
 
        if (isset($_POST["Send_Notice_To_All"])) {
                   
-            $this->Send_Notification_To_All();
-
-
+            $this->Send_Notification_To_All($_POST['notice']);
      
         } 
        
@@ -51,47 +49,36 @@ class Notification_Management
     }
 
     // Funtion to send notification to all the users 
-    public function Send_Notification_To_All(){
+    public function Send_Notification_To_All($Notice){
+                                
                                 include_once 'GCM.php';
           
                                 $gcm = new GCM();
-    
 
-
-                                $registatoin_ids = "9897";//array($regId);
+                                $registatoin_ids = "9897"; //array($regId);
                                 
-                                $message = "sandkjnsa";//array("message" => $message); //modifying a little below
+                                $message = "sandkjnsa"; //array("message" => $message); //modifying a little below
 
                                 //$message = array($message);
+                                $this->Add_Notice_To_Database($Notice);
 
                                 $result = $gcm->send_notification($registatoin_ids, $message);
 
 
-/*      
-                 if ($this->databaseConnection()) {
-
-                            $query_display_police_directory = $this->db_connection->prepare('SELECT * FROM police_directory LIMIT '.$start.' , '.$limit.'');
 
 
-                            $query_display_police_directory->execute();
-                             while ($result = $query_display_police_directory->fetchObject()) {
-                              // Code to send notification to all the users 
+    }
+    public function Add_Notice_To_Database($Notice){
+              if ($this->databaseConnection()) {
 
-                                $registatoin_ids = "9897";array($regId);
-                                
-                                $message = "sandkjnsa";array("message" => $message); //modifying a little below
+                            $query_to_add_in_db = $this->db_connection->prepare('INSERT INTO notice (notice) VALUES (:notice)');
 
-                                //$message = array($message);
+                            $query_to_add_in_db->bindValue(':notice' , $Notice , PDO::PARAM_STR);
 
-                                $result = $gcm->send_notification($registatoin_ids, $message);
+                            $query_to_add_in_db->execute();
 
-
-                         
-                            }
+                             
                       }
-
-*/
-
 
     }
     
