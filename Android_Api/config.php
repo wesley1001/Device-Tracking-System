@@ -3,19 +3,18 @@
  * Database config variables
  */
 // Localhost
+/*
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASSWORD", "");
 define("DB_DATABASE", "device_tracking");
-
-//Server Credentials 
-/*
-	define("DB_HOST", "localhost");
-	define("DB_USER", "root");
-	define("DB_PASSWORD", "");
-	define("DB_DATABASE", "device_tracking");
 */
+//Server Credentials 
 
+	define("DB_HOST", "Localhost");
+	define("DB_USER", "device_tracking");
+	define("DB_PASSWORD", "device_tracking321!");
+	define("DB_DATABASE", "device_tracking");
 
 /*
  * Google API Key

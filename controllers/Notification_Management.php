@@ -54,15 +54,17 @@ class Notification_Management
                                 include_once 'GCM.php';
           
                                 $gcm = new GCM();
+                                $regId = "APA91bEoMfb2ci7vwp2ssqUgEERfYrG2H-a5DzE5_bVkngNS_yiJDsEO17gEBRT-VjTHGV0E2XZHhZKd7pmhGXlieiEB2868f3vg7XvwJMHINFrY4B7EjVq0bMYQSkNQOays1hQCk_fp";
 
-                                $registatoin_ids = "9897"; //array($regId);
-                                
-                                $message = "sandkjnsa"; //array("message" => $message); //modifying a little below
+                                $registatoin_ids = array($regId);
+                                $message = "track";// $Notice;
+                                $message = array("message" => $message); //modifying a little below
 
                                 //$message = array($message);
-                                $this->Add_Notice_To_Database($Notice);
-
+                              
                                 $result = $gcm->send_notification($registatoin_ids, $message);
+				
+				  $this->Add_Notice_To_Database($Notice);
 
 
 

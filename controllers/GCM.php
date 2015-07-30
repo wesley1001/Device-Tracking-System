@@ -61,7 +61,7 @@ class GCM {
 
         // Close connection
         curl_close($ch);
-        echo $result;
+      //  echo $result;
     }
 
 }
