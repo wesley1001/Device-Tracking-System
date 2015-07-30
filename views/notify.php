@@ -2,6 +2,11 @@
 
     include('_header.php');
 
+    include('controllers/Notification_Management.php');
+    
+    $Notification_Management = new Notification_Management();
+
+
 ?>
             
       <!--main content start-->
@@ -40,17 +45,17 @@
                                   </header>
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="#" class="form-horizontal">
+                                          <form action="notify.php" class="form-horizontal" method="post">
                                               <div class="form-group">
                                                   <label class="control-label col-sm-2">Create A Notice</label>
                                                   <div class="col-sm-10">
-                                                      <textarea class="form-control ckeditor" name="editor1" rows="6" required></textarea>
+                                                      <textarea class="form-control ckeditor" name="editor1" rows="6" ></textarea>
                                                   </div>
                                               </div>
                                               <div class="form-group">
                                                   <div class="col-sm-12">
                                                     <center>
-                                                      <input type="submit" class="btn btn-primary" name="send_notice" value="Send Notice">
+                                                      <input type="submit" name="Send_Notice_To_All" class="btn btn-primary" name="send_notice" value="Send Notice">
                                                     </center>
                                                   </div>
                                               </div>

@@ -19,8 +19,8 @@ if (isset($_GET["regId"]) && isset($_GET["message"])) {
     //$message = array($message);
 
     $result = $gcm->send_notification($registatoin_ids, $message);
-
-
     echo $result;
 }
 ?>
+
+

@@ -27,3 +27,4 @@ define("EMAIL_SMTP_PORT", 465);
 define("EMAIL_SMTP_ENCRYPTION", "ssl");
 
 
+define("GOOGLE_API_KEY", "AIzaSyDpI4u7ZmrcDtJN9Ck9edjIgJRacWT-Hi8");

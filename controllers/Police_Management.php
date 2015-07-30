@@ -13,6 +13,10 @@ class Police_Management
      */
     public  $messages                 = array();
 
+    public $flag                      = false;
+
+    public $Police_Information        = array();
+
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$login = new Login();"
@@ -29,6 +33,11 @@ class Police_Management
         // To delete a particulat police 
         if(isset($_POST["delete_police"])){
             $this->Delete_Police_Directory($_POST['delete_police_directory']);
+        }
+
+        //
+        if(isset($_POST["search_device"])){
+          $this->Show_Device( $_POST['data'] , $_POST['type']);
         }
 
     }
@@ -68,9 +77,13 @@ class Police_Management
             // if username or/and email find in the database
             // TODO: this is really awful!
             if (count($result) > 0) {
+          
                 for ($i = 0; $i < count($result); $i++) {
+          
                     $this->errors[] = "This person is already added or you are adding same email id . Please check your directory . ";
+          
                 }
+          
             } else {
            
                 $query_new_user_insert = $this->db_connection->prepare('INSERT INTO police_directory (first_name, middle_name, last_name, email_id, phone_number, designation , entry_time) VALUES(:first_name, :middle_name, :last_name, :email_id ,:phone_number, :designation, now() )');
@@ -84,9 +97,13 @@ class Police_Management
                 $user_id = $this->db_connection->lastInsertId();
 
                 if ($query_new_user_insert) {
+          
                         $this->errors[] = "Data added successfully";
+          
                 } else {
+          
                         $this->errors[] = "Error in adding data . Please try again . " ;
+          
                 }
             }
         }
@@ -205,5 +222,69 @@ class Police_Management
 
     }
 }
+    public function Show_Device( $Data , $Type )
+    {
+         if($this->databaseConnection()){
+                     if( $Type == 0 ){
+                                          
+                                          $query_to_search_user = $this->db_connection->prepare('SELECT * FROM police_directory WHERE email_id = :data ');
+                                          
+                     }else{
+                                               
+                                          $query_to_search_user  = $this->db_connection->prepare('SELECT * FROM police_directory WHERE phone_number = :data');
+                                          
+                            }
+                        $query_to_search_user->bindValue(':data', $Data ,PDO::PARAM_STR);
+                     
+                        $query_to_search_user->execute();
+                     
+                         if( $results_police_data = $query_to_search_user->fetchObject()  ){
+
+                            $this->Police_Information[0] = $results_police_data->id;
+
+                            $this->Police_Information[1] = $results_police_data->middle_name;
+
+                            $this->Police_Information[2] = $results_police_data->last_name;
+
+                            $police_id = $results_police_data->id;
+
+                            // Code to get latitude and longitude 
+
+                            $query_to_get_location = $this->db_connection->prepare('SELECT latitude , longitude FROM location WHERE uid = :id ORDER BY id DESC LIMIT 1');
+
+                            $query_to_get_location->bindValue(':id',$police_id,PDO::PARAM_STR);
+
+                            $query_to_get_location->execute();
+
+                            if( $results_location  =  $query_to_get_location->fetchObject()){
+                              
+                              $this->Police_Information[3] = $results_location->latitude;
+                              $this->Police_Information[4] = $results_location->longitude;
+                            
+                            }
+
+                            $this->flag = true; 
+
+
+                        }else{
+                       
+                          $this->Police_Information[0] = "Result is not found . Please Try Again .";
+                       
+                        }
+
+
+
+
+
+          }
+
+
+
+
+
+    }
+  public function Check_Data(){
+    return $this->flag;
+  }
     
 }
