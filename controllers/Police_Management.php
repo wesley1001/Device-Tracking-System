@@ -149,9 +149,9 @@ class Police_Management
                                                 </div>
                                                 <div class="form-group">
                                                      <div class="btn-group">
-                                                        
-                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                                  
+                                                        <!-- 
+                                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        -->
                                                         <button type="submit" class="btn btn-danger" name="delete_police"><i class="icon_close_alt2"></i></button>
                                                     </div>         
                                                 </div>
@@ -242,9 +242,14 @@ class Police_Management
 
                             $this->Police_Information[0] = $results_police_data->id;
 
-                            $this->Police_Information[1] = $results_police_data->middle_name;
+                            $this->Police_Information[1] = $results_police_data->first_name;
 
-                            $this->Police_Information[2] = $results_police_data->last_name;
+                            $this->Police_Information[2] = $results_police_data->middle_name;
+
+                            $this->Police_Information[3] = $results_police_data->last_name;
+
+                            $this->Police_Information[4] = $results_police_data->gcm_key;
+
 
                             $police_id = $results_police_data->id;
 
@@ -258,8 +263,8 @@ class Police_Management
 
                             if( $results_location  =  $query_to_get_location->fetchObject()){
                               
-                              $this->Police_Information[3] = $results_location->latitude;
-                              $this->Police_Information[4] = $results_location->longitude;
+                              $this->Police_Information[5] = $results_location->latitude;
+                              $this->Police_Information[6] = $results_location->longitude;
                             
                             }
 

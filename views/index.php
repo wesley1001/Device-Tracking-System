@@ -46,20 +46,20 @@
 
              <?php 
                   if($Police_Management->Check_Data()){
-                   /* 
+                    
                         echo " Name :";
-                        echo $Police_Management->Police_Information[0];
-                        echo " ";
                         echo $Police_Management->Police_Information[1];
                         echo " ";
                         echo $Police_Management->Police_Information[2];
                         echo " ";
+                        echo $Police_Management->Police_Information[3];
+                        echo " ";
                         echo "<br>";
 
-                    */
+                   
 
                            echo '  <script>
-                                            var myCenter=new google.maps.LatLng('.$Police_Management->Police_Information[3].','.$Police_Management->Police_Information[4].');
+                                            var myCenter=new google.maps.LatLng('.$Police_Management->Police_Information[5].','.$Police_Management->Police_Information[6].');
 
                                             function initialize() {
                                               var mapProp = {
@@ -80,18 +80,23 @@
                                   <div class="col-sm-6">
                                      <center>
                                               <!-- Write a code to send notification to mobile to live track -->
-                                               
-                                                Start Track 
-
+                                      <form class="form-inline" role="form" action="index.php" method="post" >
+                                              
+                                               <input type="hidden"  name = "police_id" class="form-control sm-input"  value= '.$Police_Management->Police_Information[4].'>
+                              
+                                               <button type="submit" name="start_track" class="btn btn-success">Start Track</button>
+                   
+                                      </form>
                                     </center>
 
                                   </div>
 
                                   <div class="col-sm-6">
                                      <center>
-                                              <!-- Write a code to send notification to mobile to live track -->
+                                              <!-- It should open a modle -->
                                                
-                                                Stop Track 
+                                          <button type="submit"  class="btn btn-success">Send Notification</button>
+                       
 
                                     </center>
 

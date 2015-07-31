@@ -24,6 +24,11 @@ class Notification_Management
             $this->Send_Notification_To_All($_POST['notice']);
      
         } 
+
+        if(isset($_POST['strat_track'])){
+          $this->Start_Track($_POST['police_id']);
+        }
+
        
 
     }
@@ -54,17 +59,23 @@ class Notification_Management
                                 include_once 'GCM.php';
           
                                 $gcm = new GCM();
+                                // Select all ids for broadcasting 
+
+
+
                                 $regId = "APA91bEoMfb2ci7vwp2ssqUgEERfYrG2H-a5DzE5_bVkngNS_yiJDsEO17gEBRT-VjTHGV0E2XZHhZKd7pmhGXlieiEB2868f3vg7XvwJMHINFrY4B7EjVq0bMYQSkNQOays1hQCk_fp";
 
                                 $registatoin_ids = array($regId);
-                                $message = "track";// $Notice;
+                                $message =  $Notice;
                                 $message = array("message" => $message); //modifying a little below
 
                                 //$message = array($message);
                               
                                 $result = $gcm->send_notification($registatoin_ids, $message);
 				
-				  $this->Add_Notice_To_Database($Notice);
+			 
+
+                             	  $this->Add_Notice_To_Database($Notice);
 
 
 
@@ -81,6 +92,25 @@ class Notification_Management
 
                              
                       }
+
+    }
+    public function Start_Track($gcm_key){
+
+                                include_once 'GCM.php';
+          
+                                $gcm = new GCM();
+
+                                $regId = $gcm_key;//"APA91bEoMfb2ci7vwp2ssqUgEERfYrG2H-a5DzE5_bVkngNS_yiJDsEO17gEBRT-VjTHGV0E2XZHhZKd7pmhGXlieiEB2868f3vg7XvwJMHINFrY4B7EjVq0bMYQSkNQOays1hQCk_fp";
+
+                                $registatoin_ids = array($regId);
+                                $message = "track";// $Notice;
+                                $message = array("message" => $message); //modifying a little below
+
+                                //$message = array($message);
+                              
+                                $result = $gcm->send_notification($registatoin_ids, $message);
+        
+                             //   $this->Add_Notice_To_Database($Notice);
 
     }
     

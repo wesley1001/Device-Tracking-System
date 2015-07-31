@@ -7,6 +7,10 @@ require_once('classes/Login.php');
 
 $login = new Login();
 
+require_once('controllers/Notification_Management.php');
+
+$Notification_Management = new Notification_Management();
+
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
