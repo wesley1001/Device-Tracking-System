@@ -95,12 +95,10 @@ class Android_Api
               if ($this->databaseConnection()) {
 
                             $query_to_add_in_db = $this->db_connection->prepare('INSERT INTO location ( latitude  , longitude , uid , time   ) VALUES ( :lat , :long , :userid , now())');
-
                             $query_to_add_in_db->bindValue(':lat' , $lat , PDO::PARAM_STR);
-                            $query_to_add_in_db->bindValue(':long' , $lat , PDO::PARAM_STR);
-			    $query_to_add_in_db->bindValue(':userid' , $lat , PDO::PARAM_STR);
+                            $query_to_add_in_db->bindValue(':long' , $long , PDO::PARAM_STR);
+			                      $query_to_add_in_db->bindValue(':userid' , $userid , PDO::PARAM_STR);
                             $query_to_add_in_db->execute();
-
                              
                       }
 
