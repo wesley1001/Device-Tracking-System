@@ -94,9 +94,9 @@
                                   <div class="col-sm-6">
                                      <center>
                                               <!-- It should open a modle -->
-                                               
-                                          <button type="submit"  class="btn btn-success">Send Notification</button>
-                       
+                              <a href="#myModal-1" data-toggle="modal" class="btn  btn-primary"  >
+                                   Send Notification
+                              </a>
 
                                     </center>
 
@@ -119,6 +119,50 @@
                   }
 
              ?>
+             <!-- Modals -->
+   <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal-1" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Send Notification</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-body">
+            <div class="form">
+              <form class="form-validate form-horizontal " id="register_form" method="post" action="index.php">
+                <div class="form-group ">
+                  <div class="col-lg-9">
+                    <input class=" form-control" id="first_name" name="gcm_key_individual" type="hidden" value=<?php  echo $Police_Management->Police_Information[4]; ?> />
+                  </div>
+                </div>
+                <div class="form-group ">
+                  <div class="col-lg-9">
+                    <input class=" form-control" id="first_name" name="gcm_key_individual" type="hidden" value=<?php  echo $Police_Management->Police_Information[0]; ?> />
+                  </div>
+                </div>
+                <div class="form-group ">
+                  <label for="first_name" class="control-label col-lg-3">Message<span class="required">*</span></label>
+                  <div class="col-lg-9">
+                    <input class=" form-control" id="first_name" name="individual_notice" type="text" required/>
+                  </div>
+                </div>
+                
+
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                   <center>
+                     <button class="btn btn-primary" name="send_individual_notification"type="submit">Send</button>
+                   </center>
+                 </div>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div> 
             
               <!-- page end-->
  <?php 
