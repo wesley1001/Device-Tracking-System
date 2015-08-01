@@ -1,8 +1,6 @@
 <?php
 
     include('_header.php');
-   require_once('controllers/Police_Management.php');
-    $Police_Management = new Police_Management();
 
 ?>
             
@@ -133,18 +131,18 @@
               <form class="form-validate form-horizontal " id="register_form" method="post" action="index.php">
                 <div class="form-group ">
                   <div class="col-lg-9">
-                    <input class=" form-control" id="first_name" name="gcm_key_individual" type="hidden" value=<?php  echo $Police_Management->Police_Information[4]; ?> />
+                    <input class=" form-control" id="gcm_key" name="gcm_key_individual" type="hidden" value=<?php  echo $Police_Management->Police_Information[4]; ?> />
                   </div>
                 </div>
                 <div class="form-group ">
                   <div class="col-lg-9">
-                    <input class=" form-control" id="first_name" name="gcm_key_individual" type="hidden" value=<?php  echo $Police_Management->Police_Information[0]; ?> />
+                    <input class=" form-control" id="first_name" name="police_individual_id" type="hidden" value=<?php  echo $Police_Management->Police_Information[0]; ?> />
                   </div>
                 </div>
                 <div class="form-group ">
-                  <label for="first_name" class="control-label col-lg-3">Message<span class="required">*</span></label>
+                  <label for="message" class="control-label col-lg-3">Message<span class="required">*</span></label>
                   <div class="col-lg-9">
-                    <input class=" form-control" id="first_name" name="individual_notice" type="text" required/>
+                    <input class=" form-control" id="message" name="individual_notice" type="text" required/>
                   </div>
                 </div>
                 
@@ -168,4 +166,3 @@
  <?php 
     include('_footer.php');
 ?>
-

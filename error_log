@@ -2,3 +2,6 @@
 [30-Jul-2015 10:24:00 UTC] PHP Fatal error:  Class 'Android_Api' not found in /home/chimforu/public_html/energytesting/Android_Api.php on line 4
 [30-Jul-2015 10:51:27 UTC] PHP Fatal error:  Class 'Android_Api' not found in /home/chimforu/public_html/energytesting/Android_Api.php on line 4
 [30-Jul-2015 10:51:44 UTC] PHP Fatal error:  Class 'Android_Api' not found in /home/chimforu/public_html/energytesting/Android_Api.php on line 4
+[31-Jul-2015 15:23:16 UTC] PHP Fatal error:  Call to a member function send_notification() on a non-object in /home/chimforu/public_html/energytesting/controllers/Notification_Management.php on line 79
+[31-Jul-2015 15:31:03 UTC] PHP Fatal error:  Call to a member function send_notification() on a non-object in /home/chimforu/public_html/energytesting/controllers/Notification_Management.php on line 79
+[31-Jul-2015 15:32:34 UTC] PHP Fatal error:  Call to a member function send_notification() on a non-object in /home/chimforu/public_html/energytesting/controllers/Notification_Management.php on line 79

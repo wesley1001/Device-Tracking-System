@@ -1,18 +1,18 @@
 <?php
 //Localhost credentials
-
+/*
 define("DB_HOST", "localhost");
 define("DB_NAME", "device_tracking");
 define("DB_USER", "root");
 define("DB_PASS", "");
-
+*/
 //Server credentials 
-/*
+
 define("DB_HOST", "localhost");
 define("DB_NAME", "device_tracking");
 define("DB_USER", "device_tracking");
 define("DB_PASS", "device_tracking321!");
-*/
+
 
 define("COOKIE_RUNTIME", 1209600);
 define("COOKIE_DOMAIN", ".127.0.0.1");

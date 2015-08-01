@@ -5,11 +5,17 @@ require_once('config/config.php');
 // load the login class
 require_once('classes/Login.php');
 
-$login = new Login();
-
+   require_once('controllers/Police_Management.php');
+   
 require_once('controllers/Notification_Management.php');
 
 $Notification_Management = new Notification_Management();
+    $Police_Management = new Police_Management();
+
+$login = new Login();
+
+
+
 
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) {
