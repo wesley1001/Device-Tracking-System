@@ -5,7 +5,7 @@ require_once('config/config.php');
 // load the login class
 require_once('classes/Login.php');
 
-   require_once('controllers/Police_Management.php');
+require_once('controllers/Police_Management.php');
    
 require_once('controllers/Notification_Management.php');
 

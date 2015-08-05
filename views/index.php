@@ -142,7 +142,7 @@
                 <div class="form-group ">
                   <label for="message" class="control-label col-lg-3">Message<span class="required">*</span></label>
                   <div class="col-lg-9">
-                    <input class=" form-control" id="message" name="individual_notice" type="text" required/>
+                    <input type="text" class=" form-control" id="message" name="individual_notice" required/>
                   </div>
                 </div>
                 

@@ -26,14 +26,14 @@ class Notification_Management
      
         } 
 
-        if(isset($_POST['start_track'])){
+        if(isset($_POST['startt_track'])){
           $this->Start_Track($_POST['police_id']);
         }
 
 
         if(isset($_POST["send_individual_notification"])){
 
-          $this->Send_Individual_Notice($_POST['gcm_key_individual'] , $_POST['police_individual_id'] , $_POST["individual_notice"]  );
+          $this->Send_Individual_Notice($_POST['gcm_key_individual'] , $_POST['police_individual_id'] , $_POST['individual_notice']  );
         
         }
 
@@ -97,20 +97,22 @@ class Notification_Management
                       }
 
     }
-    public function Add_Notice_To_Database_With_Id ($Noticess,$Ids){
+    public function Add_Notice_To_Database_With_Id ($Notice,$Id){
+
               if ($this->databaseConnection()) {
 
-                            $query_to_add_in_db_Id = $this->db_connection->prepare('INSERT INTO notice (notice,uid) VALUES (:notice ,:uid)');
+                            $query_to_add_in_db = $this->db_connection->prepare('INSERT INTO notice (notice , uid) VALUES (:notice , :uid)');
 
-                            $query_to_add_in_db_Id->bindValue(':notice',$Noticess,PDO::PARAM_STR);
+                            $query_to_add_in_db->bindValue(':notice' , $Notice , PDO::PARAM_STR);
 
-                            $query_to_add_in_db_Id->bindValue(':uid',$Ids,PDO::PARAM_STR);
+                            $query_to_add_in_db->bindValue(':uid' , $Id , PDO::PARAM_STR);
 
-                            $query_to_add_in_db_Id->execute();
+                            $query_to_add_in_db->execute();
 
                              
                       }
 
+    
     }
     public function Start_Track($Final_Key){
                                 include_once 'GCM.php';
@@ -120,22 +122,80 @@ class Notification_Management
                                 $registatoin_ids = array($regId);
                                 $message = "track";// $Notice;
                                 $message = array("message" => $message); //modifying a little below
-                                $gcm->send_notification($registatoin_ids, $message);
-                                
+                                 $gcm->send_notification($registatoin_ids, $message);
                               
     }  
 
 
-    public function Send_Individual_Notice( $gcm_keys ,$police_ids ,$Notice_For  ){
+    public function Send_Individual_Notice( $gcm_keys ,$police_ids ,$messages_real  ){
                                 include_once 'GCM.php';
                                 $gcm = new GCM();
+        
                                 $regIds = $gcm_keys; //"APA91bEoMfb2ci7vwp2ssqUgEERfYrG2H-a5DzE5_bVkngNS_yiJDsEO17gEBRT-VjTHGV0E2XZHhZKd7pmhGXlieiEB2868f3vg7XvwJMHINFrY4B7EjVq0bMYQSkNQOays1hQCk_fp";
                                 $registatoin_idss = array($regIds);
-                                $messagess =  $Notice_For;
-                                $messagess = array("message" => $messagess); //modifying a little below
-                                $gcm->send_notification($registatoin_idss, $messagess);
-                                $this->Add_Notice_To_Database_With_Id($Notice_For , $police_ids);
+                                $messages =  $messages_real;
+                                $messages = array("message" => $messages); //modifying a little below
+                                $result = $gcm->send_notification($registatoin_idss, $messages);
+                                $this->Add_Notice_To_Database_With_Id($messages_real , $police_ids);
 
 
     }  
+
+  public function Display_Notifications( $page_id , $user_id ){
+                                if($this->databaseConnection()){
+                                      $query_notice = $this->db_connection->prepare('SELECT * FROM notice ORDER BY id DESC');
+                                      $query_notice->execute();
+                                      while( $results_notice = $query_notice->fetchObject()  ){
+                                           $Actual_Id = $results_notice->uid;
+                                          // Public notice
+                                          if( $Actual_Id == null ){
+                                            echo '
+                                                        <li>
+                                                          <div class="timeline-badge"><i class="fa fa-check"></i>
+                                                          </div>
+                                                          <div class="timeline-panel">
+                                                              <div class="timeline-heading">
+                                                                  <h4 class="timeline-title">Public Notice</h4>
+                                                                 <!-- 
+                                                                  <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago</small>
+                                                                  </p>
+                                                                  -->
+                                                              </div>
+                                                              <div class="timeline-body">
+                                                                  <p>'.$results_notice->notice.'</p>
+                                                              </div>
+                                                          </div>
+                                                      </li>
+                                            ';
+
+                                          }else{
+                                            //Personal Notice
+                                              if( $Actual_Id == $user_id ){
+                                                        echo '
+                                                  <li class="timeline-inverted">
+                                                          <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                                                          </div>
+                                                          <div class="timeline-panel">
+                                                              <div class="timeline-heading">
+                                                                  <h4 class="timeline-title">Personal Notice</h4>
+                                                              </div>
+                                                              <div class="timeline-body">
+                                                                   <p>'.$results_notice->notice.'</p> 
+                                                                   </div>
+                                                          </div>
+                                                  </li>
+                                            ';
+
+                                          }
+                                      }
+                           }      
+
+              } 
+    }
 }
+
+
+
+
+
+
